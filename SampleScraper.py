@@ -3,6 +3,7 @@
 
 import tweepy #https://github.com/tweepy/tweepy
 import csv
+import re
 
 #Twitter API credentials
 consumer_key = ""
@@ -56,11 +57,11 @@ def get_all_tweets(screen_name):
 		
 		print ("...%s tweets downloaded so far" % (len(alltweets)))
 
-	#cleaned_text = [re.sub(r'http[s]?:\/\/.*[\W]*', '', i.text, flags=re.MULTILINE) for i in alltweets] # remove urls
-	#cleaned_text = [re.sub(r'@[\w]*', '', i, flags=re.MULTILINE) for i in cleaned_text] # remove the @twitter mentions 
+	cleaned_text = [re.sub(r'http[s]?:\/\/.*[\W]*', '', i.text, flags=re.MULTILINE) for i in alltweets] # remove urls
+	cleaned_text = [re.sub(r'@[\w]*', '', i, flags=re.MULTILINE) for i in cleaned_text] # remove the @twitter mentions 
 	#cleaned_text = [re.sub(r'RT.*','', i, flags=re.MULTILINE) for i in cleaned_text] # delete the retweets
 	#transform the tweepy tweets into a 2D array that will populate the csv	
-	outtweets = [[tweet.id_str, tweet.created_at, alltweets[idx]] for idx,tweet in enumerate(alltweets)]
+	outtweets = [[tweet.id_str, tweet.created_at, cleaned_text[idx]] for idx,tweet in enumerate(alltweets)]
 
 	#write the csv	
 	with open('test/%s_tweets.csv' % screen_name, 'w') as f:
