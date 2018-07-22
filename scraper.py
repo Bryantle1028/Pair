@@ -8,8 +8,8 @@ import csv
 import re
 
 #Twitter API credentials
-consumer_key = ""
-consumer_secret = ""
+consumer_key = "yNu3JeFzWJXqUvmoT03H30PXr"
+consumer_secret = "f1NdJYV4A6cb64QYaFmshyDhQCl4BRzyJkNVqOF0h4otWrSae0"
 
 #Twitter URLs
 request_token_url = 'https://api.twitter.com/oauth/request_token'
@@ -60,53 +60,66 @@ def authFlow():
 
 	return access_token	
 
-def get_all_tweets(screen_name, access_token):
+def get_all_tweets(userId, access_token):
 	#authorize twitter, initialize tweepy
+	page = 0
 	auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 	auth.set_access_token(access_token[b'oauth_token'], access_token[b'oauth_token_secret'])
 	api = tweepy.API(auth)
 
 	#initialize a list to hold all the tweepy Tweets
 	alltweets = []	
+	allfavs = []
 
 	#make initial request for most recent tweets (200 is the maximum allowed count)
-	new_tweets = api.user_timeline(screen_name = screen_name,count=200)
+	new_tweets = api.user_timeline(screen_name = userId,count=200)
+	new_favs = api.favorites(userId, page)
 
 	#save most recent tweets
 	alltweets.extend(new_tweets)
+	allfavs.extend(new_favs)
 
 	#save the id of the oldest tweet less one
 	if len(alltweets) > 0:
 		oldest = alltweets[-1].id - 1
 
 	#keep grabbing tweets until there are no tweets left to grab
-	while len(new_tweets) > 0:
+	while len(new_tweets) > 0 || len(new_favs) > 0:
 		print ("getting tweets before %s" % (oldest))
+		page += 1
 		
 		#all subsiquent requests use the max_id param to prevent duplicates
-		new_tweets = api.user_timeline(screen_name = screen_name,count=200,max_id=oldest)
-		
+		new_tweets = api.user_timeline(screen_name = userId,count=200,max_id=oldest)
+		new_favs = api.favorites(userId, page)
+
 		#save most recent tweets
 		alltweets.extend(new_tweets)
-		
+		allfavs.extend(new_favs)
+
 		#update the id of the oldest tweet less one
 		oldest = alltweets[-1].id - 1
 		
 		print ("...%s tweets downloaded so far" % (len(alltweets)))
+		print ("...%s favs downloaded so far" % (len(allfavs)))
 	cleaned_text = [re.sub(r'http[s]?:\/\/.*[\W]*', '', i.text, flags=re.MULTILINE) for i in alltweets] # remove urls
 	cleaned_text = [re.sub(r'@[\w]*', '', i, flags=re.MULTILINE) for i in cleaned_text] # remove the @twitter mentions
+	cleaned_favs = [re.sub(r'http[s]?:\/\/.*[\W]*', '', i.text, flags=re.MULTILINE) for i in allfavs] # remove urls
+	cleaned_favs = [re.sub(r'@[\w]*', '', i, flags=re.MULTILINE) for i in cleaned_favs] # remove the @twitter mentions
 	#transform the tweepy tweets into a 2D array that will populate the csv	
 	outtweets = [[tweet.id_str, tweet.created_at, cleaned_text[idx].encode("utf-8")] for idx,tweet in enumerate(alltweets)]
+	outfavs = [[tweet.id_str, tweet.created_at, cleaned_favs[idx].encode("utf-8")] for idx,tweet in enumerate(allfavs)]
 
 	#write the csv	
-	with open('test/%s_tweets.csv' % screen_name, 'w') as f:
+	with open('test/%s_tweets.csv' % userId, 'w') as f:
 		writer = csv.writer(f)
 		writer.writerow(["id","created_at","text"])
 		writer.writerows(outtweets)
+		writer.writerow(["|||"])
+		writer.writerows(outfavs)
 
 	pass
 
 if __name__ == '__main__':
 	#pass in the username of the account you want to download
 	access_token = authFlow()
-	get_all_tweets("SCREEN NAME", access_token)
+	get_all_tweets("SCREEN_NAME", access_token)
