@@ -8,8 +8,8 @@ import csv
 import re
 
 #Twitter API credentials
-consumer_key = ""
-consumer_secret = ""
+consumer_key = "yNu3JeFzWJXqUvmoT03H30PXr"
+consumer_secret = "f1NdJYV4A6cb64QYaFmshyDhQCl4BRzyJkNVqOF0h4otWrSae0"
 
 #Twitter URLs
 request_token_url = 'https://api.twitter.com/oauth/request_token'
