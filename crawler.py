@@ -17,18 +17,44 @@ import pandas as pd
 import itertools
 import matplotlib.pyplot as plt
 
-username = "WhiskDating"
-password = "look@theflickadaWhisk"
+username = "USERNAME"
+password = "PSWD"
 users = ["oliviarance_", "hencanman"]
 
-# options = Options()
-# options.add_argument("--headless")
+def get_tweet_text(tweet):
+    tweet_text_box = tweet.find("p", {"class": "TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"})
+    images_in_tweet_tag = tweet_text_box.find_all("a", {"class": "twitter-timeline-link u-hidden"})
+    tweet_text = tweet_text_box.text
+    for image_in_tweet_tag in images_in_tweet_tag:
+        tweet_text = tweet_text.replace(image_in_tweet_tag.text, '')
+
+    return tweet_text
+
+def get_this_page_tweets(soup):
+    tweets_list = list()
+    tweets = soup.find_all("li", {"data-item-type": "tweet"})
+    for tweet in tweets:
+        tweet_data = None
+        try:
+            tweet_data = get_tweet_text(tweet)
+        except Exception as e:
+            continue
+            #ignore if there is any loading or tweet error
+
+        if tweet_data:
+            tweets_list.append(tweet_data)
+            sys.stdout.flush()
+
+    return tweets_list
+
+options = Options()
+options.add_argument("--headless")
 profile = webdriver.FirefoxProfile()
 profile.set_preference("permissions.default.image", 2)
-# tweetDriver = webdriver.Firefox(firefox_options=options, firefox_profile=profile)
-tweetDriver = webdriver.Firefox(firefox_profile=profile)
-# followingDriver = webdriver.Firefox(firefox_options=options, firefox_profile=profile)
-followingDriver = webdriver.Firefox(firefox_profile=profile)
+tweetDriver = webdriver.Firefox(firefox_options=options, firefox_profile=profile)
+# tweetDriver = webdriver.Firefox(firefox_profile=profile)
+followingDriver = webdriver.Firefox(firefox_options=options, firefox_profile=profile)
+# followingDriver = webdriver.Firefox(firefox_profile=profile)
 followingDriver.login_url = "https://twitter.com/login"
 followingDriver.get(followingDriver.login_url)
 
@@ -69,6 +95,11 @@ for currentUser in users:
     html_source = followingDriver.page_source
     sourcedata = html_source.encode('utf-8')
     soup=bs(sourcedata, features="html.parser")
+
+    if soup.find("div", {"class": "errorpage-topbar"}):
+        print("\n\n Error: Invalid username.")
+        sys.exit(1)
+
     tempusers = [x.div['data-screen-name'] for x in soup.body.findAll('div', attrs={'data-item-type':'user'})]
     tempbios = [x.p.text for x in soup.body.findAll('div', attrs={'data-item-type':'user'})]
     fullnames = [x.text.strip() for x in soup.body.findAll('a', 'fullname')][1:] # avoid your own name
@@ -95,7 +126,12 @@ for currentUser in users:
     html_source = tweetDriver.page_source
     sourcedata = html_source.encode('utf-8')
     soup=bs(sourcedata, features="html.parser")
-    temptweets = [soup.body.findAll('p', class_='TweetTextSize TweetTextSize--normal js-tweet-text tweet-text')]
+
+    if soup.find("div", {"class": "errorpage-topbar"}):
+        print("\n\n Error: Invalid username.")
+        sys.exit(1)
+
+    temptweets = get_this_page_tweets(soup)
     d = {'tweets': temptweets}
     df = pd.DataFrame(data=d)
     df.to_csv('data/' + currentUser + 'tweets.csv')
