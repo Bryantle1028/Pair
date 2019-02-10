@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1893355E2210CC180043F841 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893355D2210CC180043F841 /* User.swift */; };
 		573FBD54220F4B7800B0B090 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FBD53220F4B7800B0B090 /* AppDelegate.swift */; };
 		573FBD56220F4B7800B0B090 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FBD55220F4B7800B0B090 /* RootViewController.swift */; };
 		573FBD58220F4B7800B0B090 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FBD57220F4B7800B0B090 /* DataViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1893355D2210CC180043F841 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		573FBD50220F4B7700B0B090 /* Whisk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whisk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		573FBD53220F4B7800B0B090 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		573FBD55220F4B7800B0B090 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				573FBD57220F4B7800B0B090 /* DataViewController.swift */,
 				573FBD59220F4B7800B0B090 /* ModelController.swift */,
 				573FBD5B220F4B7800B0B090 /* Main.storyboard */,
+				1893355D2210CC180043F841 /* User.swift */,
 				573FBD5E220F4B7C00B0B090 /* Assets.xcassets */,
 				573FBD60220F4B7C00B0B090 /* LaunchScreen.storyboard */,
 				573FBD63220F4B7C00B0B090 /* Info.plist */,
@@ -265,6 +268,7 @@
 				573FBD56220F4B7800B0B090 /* RootViewController.swift in Sources */,
 				573FBD5A220F4B7800B0B090 /* ModelController.swift in Sources */,
 				573FBD58220F4B7800B0B090 /* DataViewController.swift in Sources */,
+				1893355E2210CC180043F841 /* User.swift in Sources */,
 				573FBD54220F4B7800B0B090 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
