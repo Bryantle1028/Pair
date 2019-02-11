@@ -51,6 +51,7 @@
 		573FBD73220F4B7C00B0B090 /* WhiskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhiskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		573FBD77220F4B7C00B0B090 /* WhiskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiskUITests.swift; sourceTree = "<group>"; };
 		573FBD79220F4B7C00B0B090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57895563220F5C6000D4BE46 /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +110,11 @@
 		573FBD52220F4B7700B0B090 /* Whisk */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				189335632210D8F10043F841 /* fonts */,
+=======
+				57895562220F5C5300D4BE46 /* fonts */,
+>>>>>>> b7485cf3196a2eed6fbabb5e4697f2c30005c9e4
 				573FBD53220F4B7800B0B090 /* AppDelegate.swift */,
 				573FBD55220F4B7800B0B090 /* LoginViewController.swift */,
 				573FBD5B220F4B7800B0B090 /* Main.storyboard */,
@@ -137,6 +142,14 @@
 				573FBD79220F4B7C00B0B090 /* Info.plist */,
 			);
 			path = WhiskUITests;
+			sourceTree = "<group>";
+		};
+		57895562220F5C5300D4BE46 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				57895563220F5C6000D4BE46 /* Pacifico-Regular.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
