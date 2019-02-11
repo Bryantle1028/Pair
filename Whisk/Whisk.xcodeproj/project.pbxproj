@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1893355E2210CC180043F841 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893355D2210CC180043F841 /* User.swift */; };
+		189335652210D8F10043F841 /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 189335642210D8F10043F841 /* Pacifico-Regular.ttf */; };
 		573FBD54220F4B7800B0B090 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FBD53220F4B7800B0B090 /* AppDelegate.swift */; };
-		573FBD56220F4B7800B0B090 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FBD55220F4B7800B0B090 /* RootViewController.swift */; };
-		573FBD58220F4B7800B0B090 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FBD57220F4B7800B0B090 /* DataViewController.swift */; };
-		573FBD5A220F4B7800B0B090 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FBD59220F4B7800B0B090 /* ModelController.swift */; };
+		573FBD56220F4B7800B0B090 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FBD55220F4B7800B0B090 /* LoginViewController.swift */; };
 		573FBD5D220F4B7800B0B090 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 573FBD5B220F4B7800B0B090 /* Main.storyboard */; };
 		573FBD5F220F4B7C00B0B090 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 573FBD5E220F4B7C00B0B090 /* Assets.xcassets */; };
 		573FBD62220F4B7C00B0B090 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 573FBD60220F4B7C00B0B090 /* LaunchScreen.storyboard */; };
@@ -38,11 +37,10 @@
 
 /* Begin PBXFileReference section */
 		1893355D2210CC180043F841 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		189335642210D8F10043F841 /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 		573FBD50220F4B7700B0B090 /* Whisk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whisk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		573FBD53220F4B7800B0B090 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		573FBD55220F4B7800B0B090 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		573FBD57220F4B7800B0B090 /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		573FBD59220F4B7800B0B090 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		573FBD55220F4B7800B0B090 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		573FBD5C220F4B7800B0B090 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		573FBD5E220F4B7C00B0B090 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		573FBD61220F4B7C00B0B090 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -80,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		189335632210D8F10043F841 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				189335642210D8F10043F841 /* Pacifico-Regular.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		573FBD47220F4B7700B0B090 = {
 			isa = PBXGroup;
 			children = (
@@ -103,10 +109,9 @@
 		573FBD52220F4B7700B0B090 /* Whisk */ = {
 			isa = PBXGroup;
 			children = (
+				189335632210D8F10043F841 /* fonts */,
 				573FBD53220F4B7800B0B090 /* AppDelegate.swift */,
-				573FBD55220F4B7800B0B090 /* RootViewController.swift */,
-				573FBD57220F4B7800B0B090 /* DataViewController.swift */,
-				573FBD59220F4B7800B0B090 /* ModelController.swift */,
+				573FBD55220F4B7800B0B090 /* LoginViewController.swift */,
 				573FBD5B220F4B7800B0B090 /* Main.storyboard */,
 				1893355D2210CC180043F841 /* User.swift */,
 				573FBD5E220F4B7C00B0B090 /* Assets.xcassets */,
@@ -239,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				573FBD62220F4B7C00B0B090 /* LaunchScreen.storyboard in Resources */,
+				189335652210D8F10043F841 /* Pacifico-Regular.ttf in Resources */,
 				573FBD5F220F4B7C00B0B090 /* Assets.xcassets in Resources */,
 				573FBD5D220F4B7800B0B090 /* Main.storyboard in Resources */,
 			);
@@ -265,9 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				573FBD56220F4B7800B0B090 /* RootViewController.swift in Sources */,
-				573FBD5A220F4B7800B0B090 /* ModelController.swift in Sources */,
-				573FBD58220F4B7800B0B090 /* DataViewController.swift in Sources */,
+				573FBD56220F4B7800B0B090 /* LoginViewController.swift in Sources */,
 				1893355E2210CC180043F841 /* User.swift in Sources */,
 				573FBD54220F4B7800B0B090 /* AppDelegate.swift in Sources */,
 			);
