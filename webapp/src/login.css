@@ -5,6 +5,10 @@ body {
   background-color: #00bf8e
 }
 
+h1 {
+  font-family: "Pacifico", serif, monospace;
+}
+
 .App {
   text-align: center;
 }
@@ -30,6 +34,7 @@ body {
   color: #61dafb;
 }
 
+/* SPINNY CODE
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -38,3 +43,4 @@ body {
     transform: rotate(360deg);
   }
 }
+*/
