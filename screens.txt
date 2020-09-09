@@ -6,3 +6,9 @@ Settings
 Tweets
 Messaging Home
 Messaging Back and Forth
+
+Sign Up Flow:
+    Email, Username, and Password
+    Link Socials
+    Search Radius and Gender Preference
+    Pics and Bio

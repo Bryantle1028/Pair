@@ -1,2 +1,4 @@
 1. Black pixel on right arrow resource
-2. Round Login Corners
+2. Round Button Corners
+3. Profile Scrolling
+4. Tab Bar Icon Size
